@@ -1,5 +1,5 @@
 package com.xafero.nice.rights;
 
-public interface IPermission {
-    
+public interface IPermission extends INameable {
+
 }
