@@ -1,0 +1,4 @@
+<User:Franz> <Link:isInGroup> <Group:Everyone> .
+<Group:Everyone> <Perm:views> <Bundle:Humble> .
+<Bundle:Humble> <Link:contains> <Game:Pacman> .
+<User:Herbert> <Perm:plays> <Game:Chess> .
