@@ -50,4 +50,9 @@ public class AnyId<T> implements IId<T>, IPrefix {
 	public String getPrefix() {
 		return prefix;
 	}
+
+	@Override
+	public String toString() {
+		return "{object=" + object + ", prefix=" + prefix + ", mode=" + mode + "}";
+	}
 }
