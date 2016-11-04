@@ -2,6 +2,7 @@ package com.xafero.nice.rights.rdf;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.function.Predicate;
 
 import org.apache.jena.ontology.OntTools;
@@ -22,13 +23,21 @@ public class TripleExaminer implements IExaminer {
 	private String base;
 	private Model model;
 
-	public TripleExaminer(String file) throws IOException {
+	private TripleExaminer(InputStream input) throws IOException {
 		lang = "N-TRIPLE";
 		base = "r:";
 		model = ModelFactory.createDefaultModel();
-		try (FileInputStream in = new FileInputStream(file)) {
+		try (InputStream in = input) {
 			model.read(in, base, lang);
 		}
+	}
+
+	public TripleExaminer(String file) throws IOException {
+		this(new FileInputStream(file));
+	}
+
+	public TripleExaminer(Class<?> type, String path) throws IOException {
+		this(type.getResourceAsStream(path));
 	}
 
 	@Override
